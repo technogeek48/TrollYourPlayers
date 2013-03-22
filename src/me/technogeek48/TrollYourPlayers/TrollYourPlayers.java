@@ -24,27 +24,40 @@ public class TrollYourPlayers extends JavaPlugin {
 		if (cmd.getName().equalsIgnoreCase("silentsmite")){ // If the player typed /silentsmite then do the following...
 			Player player = (Player) sender;
 			Location pos = player.getLocation();
-			String locstring = pos.toString();
-			locstring.replaceAll("{"+"}", " ");
 			//Location smiteRadius = player.getLocation().toString().replace("X, replacement);
-			player.sendMessage("Debug Command");
-			player.sendMessage("smiting you, your position is: " + locstring);
-			player.getWorld().strikeLightning(pos);
+			//player.sendMessage("Debug Command");
+			//player.sendMessage("smiting you, your position is: " + pos.toString().replaceAll("{", " "));
+			player.getWorld().strikeLightning(pos).isEffect();
 			return true;
 		} else if (cmd.getName().equalsIgnoreCase("trollmode")) {
 			int trollmode;
 			Player player = (Player) sender;
-			if(player.getFlySpeed() == -1){
-				trollmode = 0;
-			} else {
+			if(player.getActivePotionEffects().toString().contains("INVISIBILITY")){
 				trollmode = 1;
+			} else {
+				trollmode = 0;
 			}
 			if(trollmode == 0){
 				player.sendMessage("Enabled TrollMode for " + player.getName());
 				player.setAllowFlight(true);
 				player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
-			}else{
-				
+				player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 2));
+				player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 10));
+				player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 5));
+				player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 5));
+				player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 5));
+				player.giveExp(9001);
+			}else if(trollmode == 1){
+				player.sendMessage("Disabled trollmode for " + player.getName().toString());
+				player.removePotionEffect(PotionEffectType.INVISIBILITY);
+				player.removePotionEffect(PotionEffectType.SPEED);
+				player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
+				player.removePotionEffect(PotionEffectType.JUMP);
+				player.removePotionEffect(PotionEffectType.REGENERATION);
+				player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+				player.setAllowFlight(false);
+				//player.removePotionEffect(PotionEffectType.INVISIBILITY);
+				//player.removePotionEffect(PotionEffectType.INVISIBILITY);
 			}
 			return true;
 		}
