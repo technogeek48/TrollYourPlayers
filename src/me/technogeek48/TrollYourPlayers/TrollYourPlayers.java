@@ -1,5 +1,6 @@
 package me.technogeek48.TrollYourPlayers;
 
+//import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -62,7 +63,63 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
 					player.setAllowFlight(false);
 				
-			}
+			} else if (cmd.getName().equalsIgnoreCase("trollmus")){
+				//cast sender to player
+				Player senderplayer = (Player) sender;
+				//Store the argument in the variable target.
+				Player target;
+				String argsstring = args.toString();
+				argsstring = (String) target;
+				//Get current players in the world and store in variable currentplayers.
+				String currentplayers = ((Location) sender).getWorld().getPlayers().toString();
+				//See if the targeted player is in the current world.
+				if (currentplayers.contains(args.toString())){
+					//do stuff to targeted player.
+					target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 1);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					target.playSound(player.getLocation(), Sound.NOTE_PIANO, 1, 1);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1, 1);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1, 1);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1, 1);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1, 1);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1, 1);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}else{
+					sender.sendMessage(ChatColor.RED + "ERROR: Targeted player not found or not in the same world!");
+				}
 			return true;
 		}
 		return false;
