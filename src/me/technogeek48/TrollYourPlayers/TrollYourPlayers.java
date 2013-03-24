@@ -1,6 +1,8 @@
 package me.technogeek48.TrollYourPlayers;
 
 //import org.bukkit.ChatColor;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -63,8 +65,13 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
 					player.setAllowFlight(false);
 				
-			} 
+			}
 			return true;
+		} else if(cmd.getName().equalsIgnoreCase("trollmus")){
+			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			if(target == null){
+				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " is not online!");
+			}
 		}
 		return false;
 }
