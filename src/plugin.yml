@@ -9,6 +9,11 @@ commands:
       permission-message: Command not found.
    trollmode:
       description: This command is WIP.
-      usage: /<command> [player]
+      usage: /<command>
       permission: TrollYourPlayers.trollmode
+      permission-message: Command not found.
+   trollmus:
+      description: This command is WIP.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.trollmus
       permission-message: Command not found.
