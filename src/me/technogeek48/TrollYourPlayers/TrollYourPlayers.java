@@ -3,7 +3,6 @@ package me.technogeek48.TrollYourPlayers;
 //import org.bukkit.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -25,13 +24,21 @@ public class TrollYourPlayers extends JavaPlugin {
 	//------------------------------//
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("silentsmite")){ // If the player typed /silentsmite then do the following...
-			Player player = (Player) sender;
-			Location pos = player.getLocation();
-			//Location smiteRadius = player.getLocation().toString().replace("X, replacement);
-			//player.sendMessage("Debug Command");
-			//player.sendMessage("smiting you, your position is: " + pos.toString().replaceAll("{", " "));
-			player.getWorld().strikeLightning(pos).isEffect();
+		if (cmd.getName().equalsIgnoreCase("trollmus")){ 
+			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			if(target == null){
+				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
+			} else{
+				target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
+				try {
+					wait(2);
+				} catch (InterruptedException e) {
+					sender.sendMessage(ChatColor.RED + "The target player was not trolled because of a server error, check console.");
+					String error = e.toString();
+					getLogger().severe("[TrollYourPlayers] You should never get this error unless something verry wierd happens:");
+					getLogger().severe(error);
+				}
+			}
 			return true;
 		} else if (cmd.getName().equalsIgnoreCase("trollmode")) { //trollmode cmd
 			int trollmode;
@@ -67,10 +74,22 @@ public class TrollYourPlayers extends JavaPlugin {
 				
 			}
 			return true;
-		} else if(cmd.getName().equalsIgnoreCase("trollmus")){
+		} else if(cmd.getName().equalsIgnoreCase("silentsmite")){
 			Player target = (Bukkit.getServer().getPlayer(args[0]));
 			if(target == null){
-				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " is not online!");
+				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
+			} else{
+				target.getWorld().strikeLightning(target.getLocation());
+				try {
+					wait(2);
+				} catch (InterruptedException e) {
+					sender.sendMessage(ChatColor.RED + "The target player was not smited because of a server error, check console.");
+					String error = e.toString();
+					getLogger().severe("[TrollYourPlayers] You should never get this error unless something verry wierd happens:");
+					getLogger().severe(error);
+				}
+				target.getWorld().strikeLightning(target.getLocation());
+				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
 			}
 		}
 		return false;
