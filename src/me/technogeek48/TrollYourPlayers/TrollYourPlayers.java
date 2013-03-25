@@ -50,7 +50,6 @@ public class TrollYourPlayers extends JavaPlugin {
 				trollmode = 0;
 			}
 			//if the player doesn't have trollmode, give him potion effects and play wither spawn sound.
-			//detect if the player requested the quiet argument, then dont play wither sound.
 			if(trollmode == 0){
 					player.playSound(player.getLocation(), Sound.WITHER_SPAWN, 1, 0);
 					player.sendMessage("Enabled TrollMode for " + player.getName());
@@ -61,6 +60,7 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 5));
+					eventPlayerDeath
 					player.giveExp(9001);
 			}else if(trollmode == 1){ //if the player already has trollmode, remove the potion effects and play wither death sound.
 					player.playSound(player.getLocation(), Sound.WITHER_DEATH, 1, 0);
@@ -92,18 +92,16 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().strikeLightning(target.getLocation());
 				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
 			}
-		} else if(cmd.getName().equalsIgnoreCase("supersmite")){
-			Player target = (Bukkit.getServer().getPlayer(args[0]));
-			if(target == null){
-				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
-			} else{
-				Location startTargetLoc = target.getLocation();
-				target.getWorld().strikeLightning(startTargetLoc);
-				target.getWorld().strikeLightning(startTargetLoc.add(1, 0, 1));
-				target.getWorld().strikeLightning(startTargetLoc.add(2, 0, 2));
-				target.getWorld().strikeLightning(startTargetLoc.add(3, 0, 3));
-			}
-		}
+		} //else if(cmd.getName().equalsIgnoreCase("supersmite")){
+			//Player target = (Bukkit.getServer().getPlayer(args[0]));
+			//if(target == null){
+				//sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
+			//} else{
+				//Location startTargetLoc = target.getLocation();
+				//int startX = target.getLocation().getBlockX();
+				//int startZ = target.getLocation().getBlockZ();
+				//target.getWorld().strikeLightningEffect(startX+1);
+		//}
 		return false;
 }
 }
