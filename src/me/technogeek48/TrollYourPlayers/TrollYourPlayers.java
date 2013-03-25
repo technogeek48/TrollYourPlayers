@@ -3,6 +3,7 @@ package me.technogeek48.TrollYourPlayers;
 //import org.bukkit.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -90,6 +91,14 @@ public class TrollYourPlayers extends JavaPlugin {
 				}
 				target.getWorld().strikeLightning(target.getLocation());
 				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
+			}
+		} else if(cmd.getName().equalsIgnoreCase("supersmite")){
+			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			if(target == null){
+				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
+			} else{
+				Location targetlocation = target.getLocation();
+				sender.sendMessage(targetlocation.toString());
 			}
 		}
 		return false;
