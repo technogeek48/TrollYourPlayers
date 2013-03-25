@@ -97,8 +97,11 @@ public class TrollYourPlayers extends JavaPlugin {
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
-				Location targetlocation = target.getLocation();
-				sender.sendMessage(targetlocation.toString());
+				Location startTargetLoc = target.getLocation();
+				target.getWorld().strikeLightning(startTargetLoc);
+				target.getWorld().strikeLightning(startTargetLoc.add(1, 0, 1));
+				target.getWorld().strikeLightning(startTargetLoc.add(2, 0, 2));
+				target.getWorld().strikeLightning(startTargetLoc.add(3, 0, 3));
 			}
 		}
 		return false;
