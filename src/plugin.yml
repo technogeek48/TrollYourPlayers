@@ -17,3 +17,8 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.trollmus
       permission-message: Command not found.
+   supersmite:
+      description: This command is WIP.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.supersmite
+      permission-message: Command not found.
