@@ -44,7 +44,6 @@ public class TrollYourPlayers extends JavaPlugin {
 					}
 				}
 			}
-			return true;
 		} else if (cmd.getName().equalsIgnoreCase("trollmode")) { //trollmode cmd
 			int trollmode;
 			Player player = (Player) sender;
