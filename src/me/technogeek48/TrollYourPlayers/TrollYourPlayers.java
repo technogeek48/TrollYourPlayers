@@ -103,6 +103,6 @@ public class TrollYourPlayers extends JavaPlugin {
 				targetBed.getWorld().createExplosion(targetBed, 5);
 			}
 		}
-		return false;
+		return true;
 		}
 }
