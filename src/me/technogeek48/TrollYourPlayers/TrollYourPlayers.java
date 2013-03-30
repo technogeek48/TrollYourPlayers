@@ -95,12 +95,20 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().strikeLightning(targetLocation);
 			}
 		} else if(cmd.getName().equalsIgnoreCase("trollbed")){
+			if (args.length < 1){
 			Player target = (Bukkit.getServer().getPlayer(args[0]));
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
 				Location targetBed = target.getBedSpawnLocation();
+				if(targetBed == null){
+					sender.sendMessage("Player doesn't have a bed.");
+				}else{
 				targetBed.getWorld().createExplosion(targetBed, 5);
+				}
+			}
+			}else{
+				sender.sendMessage(cmd.getUsage().toString());
 			}
 		}
 		return true;
