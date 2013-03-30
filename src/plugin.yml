@@ -3,22 +3,27 @@ main: me.technogeek48.TrollYourPlayers.TrollYourPlayers
 version: 0.2
 commands:
    silentsmite:
-      description: This command is WIP.
+      description: Smites specified player.
       usage: /<command> [player]
       permission: TrollYourPlayers.silentsmite
       permission-message: Command not found.
    trollmode:
-      description: This command is WIP.
+      description: Enables trollmode.
       usage: /<command>
       permission: TrollYourPlayers.trollmode
       permission-message: Command not found.
    trollmus:
-      description: This command is WIP.
+      description: Plays strange sounds to the designated player.
       usage: /<command> [player]
       permission: TrollYourPlayers.trollmus
       permission-message: Command not found.
    supersmite:
-      description: This command is WIP.
+      description: Smites and explodes player.
       usage: /<command> [player]
       permission: TrollYourPlayers.supersmite
+      permission-message: Command not found.
+   trollbed:
+      description: Explodes specified players bedspawn.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.trollbed
       permission-message: Command not found.
