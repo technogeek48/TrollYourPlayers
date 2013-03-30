@@ -29,14 +29,19 @@ public class TrollYourPlayers extends JavaPlugin {
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
-				target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
-				try {
-					wait(2);
-				} catch (InterruptedException e) {
-					sender.sendMessage(ChatColor.RED + "The target player was not trolled because of a server error, check console.");
-					String error = e.toString();
-					getLogger().severe("[TrollYourPlayers] You should never get this error unless something verry wierd happens:");
-					getLogger().severe(error);
+				//target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
+				int start = 1;
+				int end = 50;
+				while(start != end){
+					target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
+					try {
+						wait(2);
+					} catch (InterruptedException e) {
+						sender.sendMessage(ChatColor.RED + "The target player was not smited because of a server error, check console.");
+						String error = e.toString();
+						getLogger().severe("[TrollYourPlayers] You should never get this error unless something verry wierd happens:");
+						getLogger().severe(error);
+					}
 				}
 			}
 			return true;
@@ -59,6 +64,7 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 5));
+					Bukkit.getServer().getLogger().info("Player " + player.getDisplayName().toString() + " has turned into a troll.");
 			}else if(trollmode == 1){ //if the player already has trollmode, remove the potion effects and play wither death sound.
 					player.playSound(player.getLocation(), Sound.WITHER_DEATH, 1, 0);
 					player.sendMessage("Disabled trollmode for " + player.getName().toString());
@@ -68,6 +74,7 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.removePotionEffect(PotionEffectType.JUMP);
 					player.removePotionEffect(PotionEffectType.REGENERATION);
 					player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+					Bukkit.getServer().getLogger().info("Player " + player.getDisplayName().toString() + " is no longer a troll.");
 					player.setAllowFlight(false);
 				
 			}
