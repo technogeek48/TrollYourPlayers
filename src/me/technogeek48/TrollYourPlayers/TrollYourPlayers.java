@@ -34,16 +34,11 @@ public class TrollYourPlayers extends JavaPlugin {
 				int end = 50;
 				while(start != end){
 					target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
-					try {
-						wait(2);
-					} catch (InterruptedException e) {
-						sender.sendMessage(ChatColor.RED + "The target player was not smited because of a server error, check console.");
-						String error = e.toString();
-						getLogger().severe("[TrollYourPlayers] You should never get this error unless something verry wierd happens:");
-						getLogger().severe(error);
+					target.playSound(target.getLocation(), Sound.NOTE_BASS, 1, 0);
+					target.playSound(target.getLocation(), Sound.NOTE_SNARE_DRUM, 1, 0);
+					start++;
 					}
 				}
-			}
 		} else if (cmd.getName().equalsIgnoreCase("trollmode")) { //trollmode cmd
 			int trollmode;
 			Player player = (Player) sender;
@@ -84,14 +79,6 @@ public class TrollYourPlayers extends JavaPlugin {
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
 				target.getWorld().strikeLightning(target.getLocation());
-				try {
-					wait(2);
-				} catch (InterruptedException e) {
-					sender.sendMessage(ChatColor.RED + "The target player was not smited because of a server error, check console.");
-					String error = e.toString();
-					getLogger().severe("[TrollYourPlayers] You should never get this error unless something verry wierd happens:");
-					getLogger().severe(error);
-				}
 				target.getWorld().strikeLightning(target.getLocation());
 				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
 			}
