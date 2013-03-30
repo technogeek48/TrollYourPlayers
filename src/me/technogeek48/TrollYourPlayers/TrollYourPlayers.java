@@ -1,6 +1,5 @@
 package me.technogeek48.TrollYourPlayers;
 
-//import org.bukkit.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -60,8 +59,6 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 5));
-					eventPlayerDeath
-					player.giveExp(9001);
 			}else if(trollmode == 1){ //if the player already has trollmode, remove the potion effects and play wither death sound.
 					player.playSound(player.getLocation(), Sound.WITHER_DEATH, 1, 0);
 					player.sendMessage("Disabled trollmode for " + player.getName().toString());
@@ -92,16 +89,27 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().strikeLightning(target.getLocation());
 				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
 			}
-		} //else if(cmd.getName().equalsIgnoreCase("supersmite")){
-			//Player target = (Bukkit.getServer().getPlayer(args[0]));
-			//if(target == null){
-				//sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
-			//} else{
-				//Location startTargetLoc = target.getLocation();
-				//int startX = target.getLocation().getBlockX();
-				//int startZ = target.getLocation().getBlockZ();
-				//target.getWorld().strikeLightningEffect(startX+1);
-		//}
+		} else if(cmd.getName().equalsIgnoreCase("supersmite")){
+			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			if(target == null){
+				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
+			} else{
+				Location targetLocation = target.getLocation();
+				target.getWorld().strikeLightning(targetLocation).isEffect();
+				target.getWorld().createExplosion(targetLocation, 3);
+				target.getWorld().strikeLightning(targetLocation);
+				target.getWorld().createExplosion(targetLocation, 3);
+				target.getWorld().strikeLightning(targetLocation);
+			}
+				} else if(cmd.getName().equalsIgnoreCase("trollbed")){
+			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			if(target == null){
+				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
+			} else{
+				Location targetBed = target.getBedSpawnLocation();
+				targetBed.getWorld().createExplosion(targetBed, 5);
+			}
+		}
 		return false;
-}
+		}
 }
