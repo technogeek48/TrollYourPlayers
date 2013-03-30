@@ -94,7 +94,7 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().createExplosion(targetLocation, 3);
 				target.getWorld().strikeLightning(targetLocation);
 			}
-				} else if(cmd.getName().equalsIgnoreCase("trollbed")){
+		} else if(cmd.getName().equalsIgnoreCase("trollbed")){
 			Player target = (Bukkit.getServer().getPlayer(args[0]));
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
