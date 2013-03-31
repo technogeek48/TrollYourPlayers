@@ -27,3 +27,8 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.trollbed
       permission-message: Command not found.
+   fallofdoom:
+      description: Teleports players to the sky.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.fallofdoom
+      permission-message: Command not found.
