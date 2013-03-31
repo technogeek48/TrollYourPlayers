@@ -59,6 +59,7 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 5));
 					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 5));
+					Bukkit.getServer().broadcastMessage(ChatColor.AQUA + "A troll was born.");
 					Bukkit.getServer().getLogger().info("Player " + player.getDisplayName().toString() + " has turned into a troll.");
 			}else if(trollmode == 1){ //if the player already has trollmode, remove the potion effects and play wither death sound.
 					player.playSound(player.getLocation(), Sound.WITHER_DEATH, 1, 0);
@@ -69,6 +70,7 @@ public class TrollYourPlayers extends JavaPlugin {
 					player.removePotionEffect(PotionEffectType.JUMP);
 					player.removePotionEffect(PotionEffectType.REGENERATION);
 					player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+					Bukkit.getServer().broadcastMessage(ChatColor.DARK_AQUA + "A trollzor haz diedzord.");
 					Bukkit.getServer().getLogger().info("Player " + player.getDisplayName().toString() + " is no longer a troll.");
 					player.setAllowFlight(false);
 				
@@ -98,8 +100,7 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().strikeLightning(targetLocation);
 			}
 		} else if(cmd.getName().equalsIgnoreCase("trollbed")){
-			if (args.length < 1){
-			Player player = (Player)sender;
+			Player player = (Player) sender;
 			Player target = player.getServer().getPlayer(args[0]);
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
@@ -108,13 +109,12 @@ public class TrollYourPlayers extends JavaPlugin {
 				if(targetBed == null){
 					sender.sendMessage("Player doesn't have a bed.");
 				}else{
-				targetBed.getWorld().createExplosion(targetBed, 5);
+				target.getWorld().createExplosion(targetBed, 5);
 				}
 			}
 			}else{
 				sender.sendMessage(cmd.getUsage().toString());
 			}
-		}
 		return true;
 		}
 }
