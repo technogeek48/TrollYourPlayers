@@ -14,18 +14,19 @@ import org.bukkit.potion.PotionEffectType;
 public class TrollYourPlayers extends JavaPlugin {
 	
 	public void onEnable(){
-		getLogger().info("Loaded TrollYourPlayers v.0.1");
+		//getLogger().info("Loaded TrollYourPlayers v.0.1");
 	}
 	
 	public void onDisable(){
-		getLogger().info("Unloaded TrollYourPlayers v.0.1");
+		//getLogger().info("Unloaded TrollYourPlayers v.0.1");
 	}
 	
 	//------------------------------//
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("trollmus")){ 
-			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			Player player = (Player)sender;
+			Player target = player.getServer().getPlayer(args[0]);
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
@@ -74,7 +75,8 @@ public class TrollYourPlayers extends JavaPlugin {
 			}
 			return true;
 		} else if(cmd.getName().equalsIgnoreCase("silentsmite")){
-			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			Player player = (Player)sender;
+			Player target = player.getServer().getPlayer(args[0]);
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
@@ -83,7 +85,8 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
 			}
 		} else if(cmd.getName().equalsIgnoreCase("supersmite")){
-			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			Player player = (Player)sender;
+			Player target = player.getServer().getPlayer(args[0]);
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
@@ -96,7 +99,8 @@ public class TrollYourPlayers extends JavaPlugin {
 			}
 		} else if(cmd.getName().equalsIgnoreCase("trollbed")){
 			if (args.length < 1){
-			Player target = (Bukkit.getServer().getPlayer(args[0]));
+			Player player = (Player)sender;
+			Player target = player.getServer().getPlayer(args[0]);
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
