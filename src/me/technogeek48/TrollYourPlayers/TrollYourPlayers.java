@@ -112,8 +112,11 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().createExplosion(targetBed, 5);
 				}
 			}
-			}else{
-				sender.sendMessage(cmd.getUsage().toString());
+			}else if(cmd.getName().equalsIgnoreCase("fallofdoom")){
+				Player player = (Player) sender;
+				Player target = player.getServer().getPlayer(args[0]);
+				Location targetLocation = target.getLocation();
+				targetLocation.setY(256);
 			}
 		return true;
 		}
