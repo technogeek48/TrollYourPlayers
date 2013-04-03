@@ -32,12 +32,17 @@ public class TrollYourPlayers extends JavaPlugin {
 			} else{
 				//target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
 				int start = 1;
-				int end = 50;
+				int end = 60;
 				while(start != end){
 					target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
 					target.playSound(target.getLocation(), Sound.NOTE_BASS, 1, 0);
 					target.playSound(target.getLocation(), Sound.NOTE_SNARE_DRUM, 1, 0);
 					start++;
+					try {
+						Thread.sleep(60);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 					}
 				}
 		} else if (cmd.getName().equalsIgnoreCase("trollmode")) { //trollmode cmd
@@ -116,7 +121,13 @@ public class TrollYourPlayers extends JavaPlugin {
 				Player player = (Player) sender;
 				Player target = player.getServer().getPlayer(args[0]);
 				Location targetLocation = target.getLocation();
-				targetLocation.setY(256);
+				int targetY = targetLocation.getBlockY();
+				int targetX = targetLocation.getBlockX();
+				int targetZ = targetLocation.getBlockZ();
+				float targetYaw = targetLocation.getYaw();
+				float targetPitch = targetLocation.getPitch();
+				Location newLocation = new Location(target.getWorld(), targetX, targetY + 256, targetZ, targetYaw, targetPitch);
+				target.teleport(newLocation);
 			}
 		return true;
 		}
