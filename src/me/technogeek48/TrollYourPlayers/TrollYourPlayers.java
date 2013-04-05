@@ -1,7 +1,10 @@
 package me.technogeek48.TrollYourPlayers;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -168,7 +171,8 @@ public class TrollYourPlayers extends JavaPlugin {
 				Player player = (Player) sender;
 				Player target = player.getServer().getPlayer(args[0]);
 				String option = args[0].toString();
-				
+				sender.sendMessage("WIP");
+				/*
 				if(option == "set"){
 					Location trolltp = player.getLocation();
 					int trollY = trolltp.getBlockY();
@@ -193,13 +197,54 @@ public class TrollYourPlayers extends JavaPlugin {
 					}
 					try {
 						BufferedWriter out = new BufferedWriter(new FileWriter(trolltplocationfile));
+						String teleportstring = teleport.toString();
+						out.write(teleportstring);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}else{
-					
+					File dataFolder = getDataFolder();
+					Path dataFolderPath = dataFolder.toPath();
+					File trolltplocationfile = new File(dataFolderPath + "trolltp.txt");
+					if(!dataFolder.exists()){
+						player.sendMessage("Set a location first!");
+					}else{
+						try {
+							BufferedReader in = new BufferedReader(new FileReader(trolltplocationfile));
+							String[] TPSTRING = in.readLine();
+							String[] locationvariables = TPSTRING info;
+							int xpos = Integer.parseInt(locationvariables[1]);
+							int ypos = Integer.parseInt(locationvariables[2]);
+							int zpos = Integer.parseInt(locationvariables[3]);
+							Location toTP;
+							toTP.setX(xpos);
+							toTP.setY(ypos);
+							toTP.setZ(zpos);
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}
 				}
-			}
+					*/
+				}else if(cmd.getName().equalsIgnoreCase("ragequit")){
+					Player player = (Player) sender;
+					Player target = player.getServer().getPlayer(args[0]);
+					
+					if(args.length == 0){
+						player.sendMessage(ChatColor.RED + "Please specify a player!");
+						player.sendMessage(cmd.getUsage().toString());
+					}else{
+						Bukkit.getServer().broadcastMessage(target.getDisplayName() + "is a rager");
+						target.chat("FUCK THIS SERVER I RAGEQUIT");
+						target.chat("FUCK THIS SERVER I RAGEQUIT");
+						target.chat("FUCK THIS SERVER I RAGEQUIT");
+						target.chat("FUCK THIS SERVER I RAGEQUIT");
+						target.chat("FUCK THIS SERVER I RAGEQUIT");
+						target.kickPlayer("RAGE QUIT");
+					}
+				}else if()
 		return true;
 		}
 }
