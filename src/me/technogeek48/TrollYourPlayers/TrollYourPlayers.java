@@ -1,5 +1,11 @@
 package me.technogeek48.TrollYourPlayers;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -27,6 +33,10 @@ public class TrollYourPlayers extends JavaPlugin {
 		if (cmd.getName().equalsIgnoreCase("trollmus")){ 
 			Player player = (Player)sender;
 			Player target = player.getServer().getPlayer(args[0]);
+			if (args.length == 0){
+				player.sendMessage(ChatColor.RED + "Please specify a player!");
+				player.sendMessage(cmd.getUsage().toString());
+			}else{
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
@@ -45,8 +55,10 @@ public class TrollYourPlayers extends JavaPlugin {
 					}
 					}
 				}
+			}
 		} else if (cmd.getName().equalsIgnoreCase("trollmode")) { //trollmode cmd
 			int trollmode;
+			//cast player to sender
 			Player player = (Player) sender;
 			if(player.getActivePotionEffects().toString().contains("INVISIBILITY")){
 				trollmode = 1;
@@ -82,8 +94,13 @@ public class TrollYourPlayers extends JavaPlugin {
 			}
 			return true;
 		} else if(cmd.getName().equalsIgnoreCase("silentsmite")){
+			//cast player to sender
 			Player player = (Player)sender;
 			Player target = player.getServer().getPlayer(args[0]);
+			if(args.length == 0){
+				player.sendMessage(ChatColor.RED + "Please specify a player!");
+				player.sendMessage(cmd.getUsage().toString());
+			}else{
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
@@ -91,9 +108,14 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().strikeLightning(target.getLocation());
 				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
 			}
+			}
 		} else if(cmd.getName().equalsIgnoreCase("supersmite")){
 			Player player = (Player)sender;
 			Player target = player.getServer().getPlayer(args[0]);
+			if(args.length == 0){
+				player.sendMessage(ChatColor.RED + "Please specify a player!");
+				player.sendMessage(cmd.getUsage().toString());
+			}
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
@@ -105,8 +127,13 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().strikeLightning(targetLocation);
 			}
 		} else if(cmd.getName().equalsIgnoreCase("trollbed")){
+			//cast player to sender
 			Player player = (Player) sender;
 			Player target = player.getServer().getPlayer(args[0]);
+			if (args.length == 0){
+				player.sendMessage(ChatColor.RED + "Please specify a player!");
+				player.sendMessage(cmd.getUsage().toString());
+			}else{
 			if(target == null){
 				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
 			} else{
@@ -117,8 +144,11 @@ public class TrollYourPlayers extends JavaPlugin {
 				target.getWorld().createExplosion(targetBed, 5);
 				}
 			}
+			}
 			}else if(cmd.getName().equalsIgnoreCase("fallofdoom")){
+				//cast player to sender
 				Player player = (Player) sender;
+				//cast player to args[0]
 				Player target = player.getServer().getPlayer(args[0]);
 				Location targetLocation = target.getLocation();
 				int targetY = targetLocation.getBlockY();
@@ -126,8 +156,49 @@ public class TrollYourPlayers extends JavaPlugin {
 				int targetZ = targetLocation.getBlockZ();
 				float targetYaw = targetLocation.getYaw();
 				float targetPitch = targetLocation.getPitch();
+				//Make a new location with the y axis jacked up.
 				Location newLocation = new Location(target.getWorld(), targetX, targetY + 256, targetZ, targetYaw, targetPitch);
+				if(args.length == 0){
+					player.sendMessage(ChatColor.RED + "Please specify a player!");
+					player.sendMessage(cmd.getUsage().toString());
+				}else{
 				target.teleport(newLocation);
+				}
+			}else if(cmd.getName().equalsIgnoreCase("trolltp")){
+				Player player = (Player) sender;
+				Player target = player.getServer().getPlayer(args[0]);
+				String option = args[0].toString();
+				
+				if(option == "set"){
+					Location trolltp = player.getLocation();
+					int trollY = trolltp.getBlockY();
+					int trollX = trolltp.getBlockX();
+					int trollZ = trolltp.getBlockZ();
+					float trollYaw = trolltp.getYaw();
+					float trollPitch = trolltp.getPitch();
+					Location teleport = new Location(target.getWorld(), trollX, trollY + 256, trollZ, trollYaw, trollPitch);
+					File dataFolder = getDataFolder();
+					if(!dataFolder.exists()){
+						dataFolder.mkdir();
+					}
+					Path dataFolderPath = dataFolder.toPath();
+					File trolltplocationfile = new File(dataFolderPath + "trolltp.txt");
+					if(!trolltplocationfile.exists()){
+						try {
+							trolltplocationfile.createNewFile();
+						} catch (IOException e) {
+							player.sendMessage("Failed to create location file");
+							e.printStackTrace();
+						}
+					}
+					try {
+						BufferedWriter out = new BufferedWriter(new FileWriter(trolltplocationfile));
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}else{
+					
+				}
 			}
 		return true;
 		}
