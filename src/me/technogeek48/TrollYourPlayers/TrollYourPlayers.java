@@ -1,17 +1,9 @@
 package me.technogeek48.TrollYourPlayers;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.file.Path;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -252,7 +244,37 @@ public class TrollYourPlayers extends JavaPlugin {
 					int targetY = currentTargetLocation.getBlockY();
 					int targetZ = currentTargetLocation.getBlockZ();
 					Location newTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					//Location TwoTargetLocation = new Location(target.getWorld(), targetX - 1, targetY + 5, targetZ);
+					//Location ThreeTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					//Location FourTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					//Location FiveTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					//Location SixTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					//Location SevenTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					//Location EightTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					//Location NineTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
 					
+					newTargetLocation.getBlock().setType(Material.ANVIL);
+					try {
+						Thread.sleep(2);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					newTargetLocation.getBlock().setType(Material.ANVIL);
+					try {
+						Thread.sleep(2);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					newTargetLocation.getBlock().setType(Material.ANVIL);
+					try {
+						Thread.sleep(2);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					newTargetLocation.getBlock().setType(Material.ANVIL);
 					
 				}
 		return true;
