@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.io.file.Path;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -244,7 +244,17 @@ public class TrollYourPlayers extends JavaPlugin {
 						target.chat("FUCK THIS SERVER I RAGEQUIT");
 						target.kickPlayer("RAGE QUIT");
 					}
-				}else if()
+				}else if(cmd.getName().equalsIgnoreCase("trollanvil")){
+					Player player = (Player) sender;
+					Player target = player.getServer().getPlayer(args[0]);
+					Location currentTargetLocation = target.getLocation();
+					int targetX = currentTargetLocation.getBlockX();
+					int targetY = currentTargetLocation.getBlockY();
+					int targetZ = currentTargetLocation.getBlockZ();
+					Location newTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					
+					
+				}
 		return true;
 		}
 }
