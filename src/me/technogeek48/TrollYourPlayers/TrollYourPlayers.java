@@ -5,6 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -161,8 +162,8 @@ public class TrollYourPlayers extends JavaPlugin {
 				}
 			}else if(cmd.getName().equalsIgnoreCase("trolltp")){
 				Player player = (Player) sender;
-				Player target = player.getServer().getPlayer(args[0]);
-				String option = args[0].toString();
+				//Player target = player.getServer().getPlayer(args[0]);
+				//String option = args[0].toString();
 				sender.sendMessage("WIP");
 				/*
 				if(option == "set"){
@@ -243,40 +244,28 @@ public class TrollYourPlayers extends JavaPlugin {
 					int targetX = currentTargetLocation.getBlockX();
 					int targetY = currentTargetLocation.getBlockY();
 					int targetZ = currentTargetLocation.getBlockZ();
-					Location newTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
-					//Location TwoTargetLocation = new Location(target.getWorld(), targetX - 1, targetY + 5, targetZ);
-					//Location ThreeTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
-					//Location FourTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
-					//Location FiveTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
-					//Location SixTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
-					//Location SevenTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
-					//Location EightTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
-					//Location NineTargetLocation = new Location(target.getWorld(), targetX, targetY + 5, targetZ);
+					Location newTargetLocation = new Location(target.getWorld(), targetX, targetY + 20, targetZ);
+					Location oneTargetLocation = new Location(target.getWorld(), targetX, targetY + 19, targetZ);
+					Location twoTargetLocation = new Location(target.getWorld(), targetX, targetY + 18, targetZ);
+					Location threeTargetLocation = new Location(target.getWorld(), targetX, targetY + 17, targetZ);
+					oneTargetLocation.getBlock().setType(Material.ANVIL);
+					twoTargetLocation.getBlock().setType(Material.ANVIL);
+					threeTargetLocation.getBlock().setType(Material.ANVIL);
+					newTargetLocation.getBlock().setType(Material.ANVIL);
+				}else if(cmd.getName().equalsIgnoreCase("anvilpointer")){
+					Player player = (Player) sender;
+					//get the targeted block
+					Block targetBlock = player.getTargetBlock(null, Integer.MAX_VALUE);
+					Location oneTargetLocation = new Location(player.getWorld(), targetBlock.getLocation().getBlockX(), targetBlock.getLocation().getBlockY() + 20, targetBlock.getLocation().getBlockZ());
+					Location twoTargetLocation = new Location(player.getWorld(), targetBlock.getLocation().getBlockX(), targetBlock.getLocation().getBlockY() + 19, targetBlock.getLocation().getBlockZ());
+					Location threeTargetLocation = new Location(player.getWorld(), targetBlock.getLocation().getBlockX(), targetBlock.getLocation().getBlockY() + 18, targetBlock.getLocation().getBlockZ());
+					Location fourTargetLocation = new Location(player.getWorld(), targetBlock.getLocation().getBlockX(), targetBlock.getLocation().getBlockY() + 17, targetBlock.getLocation().getBlockZ());
 					
-					newTargetLocation.getBlock().setType(Material.ANVIL);
-					try {
-						Thread.sleep(5);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					newTargetLocation.getBlock().setType(Material.ANVIL);
-					try {
-						Thread.sleep(5);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					newTargetLocation.getBlock().setType(Material.ANVIL);
-					try {
-						Thread.sleep(5);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					newTargetLocation.getBlock().setType(Material.ANVIL);
-					
+					oneTargetLocation.getBlock().setType(Material.ANVIL);
+					twoTargetLocation.getBlock().setType(Material.ANVIL);
+					threeTargetLocation.getBlock().setType(Material.ANVIL);
+					fourTargetLocation.getBlock().setType(Material.ANVIL);
 				}
-		return true;
-		}
+	return true;
+}
 }
