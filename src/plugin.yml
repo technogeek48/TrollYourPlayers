@@ -32,3 +32,18 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.fallofdoom
       permission-message: Command not found.
+   ragequit:
+      description: Makes the player look like he ragequit.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.fallofdoom
+      permission-message: Command not found.
+   trolltp:
+      description: Teleports players to the sky.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.fallofdoom
+      permission-message: Command not found.
+   trollanvil:
+      description: Places 4 anvils above the players head. Delay of 2 ms between.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.fallofdoom
+      permission-message: Command not found.
