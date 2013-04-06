@@ -255,21 +255,21 @@ public class TrollYourPlayers extends JavaPlugin {
 					
 					newTargetLocation.getBlock().setType(Material.ANVIL);
 					try {
-						Thread.sleep(2);
+						Thread.sleep(5);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					newTargetLocation.getBlock().setType(Material.ANVIL);
 					try {
-						Thread.sleep(2);
+						Thread.sleep(5);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					newTargetLocation.getBlock().setType(Material.ANVIL);
 					try {
-						Thread.sleep(2);
+						Thread.sleep(5);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
