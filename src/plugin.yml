@@ -1,6 +1,6 @@
 name: TrollYourPlayers
 main: me.technogeek48.TrollYourPlayers.TrollYourPlayers
-version: 0.2
+version: 1.0
 commands:
    silentsmite:
       description: Smites specified player.
@@ -43,7 +43,12 @@ commands:
       permission: TrollYourPlayers.fallofdoom
       permission-message: Command not found.
    trollanvil:
-      description: Places 4 anvils above the players head. Delay of 2 ms between.
+      description: Places 4 anvils above the players head.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.fallofdoom
+      permission-message: Command not found.
+   anvilpointer:
+      description: Places 4 anvils above targeted block.
       usage: /<command> [player]
       permission: TrollYourPlayers.fallofdoom
       permission-message: Command not found.

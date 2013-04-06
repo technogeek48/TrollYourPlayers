@@ -164,7 +164,7 @@ public class TrollYourPlayers extends JavaPlugin {
 				Player player = (Player) sender;
 				//Player target = player.getServer().getPlayer(args[0]);
 				//String option = args[0].toString();
-				sender.sendMessage("WIP");
+				player.sendMessage("WIP");
 				/*
 				if(option == "set"){
 					Location trolltp = player.getLocation();
