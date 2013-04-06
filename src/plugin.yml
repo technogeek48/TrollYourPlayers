@@ -38,17 +38,17 @@ commands:
       permission: TrollYourPlayers.fallofdoom
       permission-message: Command not found.
    trolltp:
-      description: Teleports players to the sky.
+      description: Teleports players to destination.
       usage: /<command> [player]
-      permission: TrollYourPlayers.fallofdoom
+      permission: TrollYourPlayers.trolltp
       permission-message: Command not found.
    trollanvil:
       description: Places 4 anvils above the players head.
       usage: /<command> [player]
-      permission: TrollYourPlayers.fallofdoom
+      permission: TrollYourPlayers.trollanvil
       permission-message: Command not found.
    anvilpointer:
       description: Places 4 anvils above targeted block.
       usage: /<command> [player]
-      permission: TrollYourPlayers.fallofdoom
+      permission: TrollYourPlayers.anvilpointer
       permission-message: Command not found.

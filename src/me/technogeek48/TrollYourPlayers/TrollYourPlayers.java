@@ -229,12 +229,12 @@ public class TrollYourPlayers extends JavaPlugin {
 						player.sendMessage(ChatColor.RED + "Please specify a player!");
 						player.sendMessage(cmd.getUsage().toString());
 					}else{
-						Bukkit.getServer().broadcastMessage(target.getDisplayName() + "is a rager");
-						target.chat("FUCK THIS SERVER I RAGEQUIT");
-						target.chat("FUCK THIS SERVER I RAGEQUIT");
-						target.chat("FUCK THIS SERVER I RAGEQUIT");
-						target.chat("FUCK THIS SERVER I RAGEQUIT");
-						target.chat("FUCK THIS SERVER I RAGEQUIT");
+						Bukkit.getServer().broadcastMessage(target.getDisplayName() + " is a rager");
+						target.chat("F*** THIS SERVER I RAGEQUIT");
+						target.chat("F*** THIS SERVER I RAGEQUIT");
+						target.chat("F*** THIS SERVER I RAGEQUIT");
+						target.chat("F*** THIS SERVER I RAGEQUIT");
+						target.chat("F*** THIS SERVER I RAGEQUIT");
 						target.kickPlayer("RAGE QUIT");
 					}
 				}else if(cmd.getName().equalsIgnoreCase("trollanvil")){
