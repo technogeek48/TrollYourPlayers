@@ -52,3 +52,8 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.anvilpointer
       permission-message: Command not found.
+   digstraightdown:
+      description: Nuffsaid.
+      usage: /<command> [player]
+      permission: TrollYourPlayers.digstraightdown
+      permission-message: Command not found.

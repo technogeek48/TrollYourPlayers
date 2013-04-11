@@ -2,6 +2,7 @@ package me.technogeek48.TrollYourPlayers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -265,6 +266,30 @@ public class TrollYourPlayers extends JavaPlugin {
 					twoTargetLocation.getBlock().setType(Material.ANVIL);
 					threeTargetLocation.getBlock().setType(Material.ANVIL);
 					fourTargetLocation.getBlock().setType(Material.ANVIL);
+				}else if(cmd.getName().equalsIgnoreCase("digstraightdown")){
+					Player player = (Player) sender;
+					Player target = player.getServer().getPlayer(args[0]);
+					if(args[0].isEmpty()){
+						player.sendMessage("Specify a player!");
+						player.sendMessage(cmd.getUsage().toString());
+					}else{
+						target.setAllowFlight(false);
+						target.setGameMode(GameMode.ADVENTURE);
+						Bukkit.getServer().broadcastMessage(target.getDisplayName() + " broke the #1 rule of minecraft: NEVER DIG STRAIGHT DOWN!!!");
+						Location targetLocation = target.getLocation();
+						Location currentTargetBlock = new Location(target.getWorld(), targetLocation.getBlockX(), 14, targetLocation.getBlockZ());
+						Location newTargetBlock = new Location(target.getWorld(), targetLocation.getBlockX(), targetLocation.getBlockY() - 1, targetLocation.getBlockZ());
+						//Location newTargetLocation = new Location(target.getWorld(), targetLocation.getBlockX(), targetLocation.getBlockY() - 2, targetLocation.getBlockZ());
+						currentTargetBlock.getBlock().setType(Material.LAVA);
+						int counterStart = currentTargetBlock.getBlockY();
+						int counterEnd = 14;
+						
+						while(counterStart != counterEnd){
+							counterStart--;
+							targetLocation.getBlock
+						}
+						
+					}
 				}
 	return true;
 }
