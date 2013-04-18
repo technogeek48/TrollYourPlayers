@@ -313,9 +313,28 @@ public class TrollYourPlayers extends JavaPlugin {
 							player.sendMessage(ChatColor.RED + "Usage:");
 							player.sendMessage(cmd.getUsage().toString());
 						}
-					}//else if(cmd.getName().equalsIgnoreCase("")){
+					}else if(cmd.getName().equalsIgnoreCase("smitepointer")){
+						Player player = (Player) sender;
 						
-					//}
+						Block targetBlock = player.getTargetBlock(null, Integer.MAX_VALUE);
+						Location targetLocation = targetBlock.getLocation();
+						Location anvilTarget = new Location(player.getWorld(), targetLocation.getBlockX(), targetLocation.getBlockY() + 20, targetLocation.getBlockZ());
+						
+						targetLocation.getWorld().strikeLightning(targetLocation);
+						targetLocation.getWorld().strikeLightning(targetLocation);
+						targetLocation.getWorld().createExplosion(targetLocation, 5);
+						targetLocation.getWorld().createExplosion(targetLocation, 5);
+						anvilTarget.getBlock().setType(Material.ANVIL);
+						try {
+							Thread.sleep(30);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						anvilTarget.
+						
+						
+					}
 	return true;
 }
 }
