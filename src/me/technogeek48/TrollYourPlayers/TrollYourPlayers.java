@@ -1,5 +1,11 @@
 package me.technogeek48.TrollYourPlayers;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -9,6 +15,8 @@ import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -163,65 +171,20 @@ public class TrollYourPlayers extends JavaPlugin {
 				}
 			}else if(cmd.getName().equalsIgnoreCase("trolltp")){
 				Player player = (Player) sender;
-				//Player target = player.getServer().getPlayer(args[0]);
-				//String option = args[0].toString();
+				Player target = (player.getServer().getPlayer(args[0]));
+				String option = args[0].toString();
 				player.sendMessage("WIP");
-				/*
-				if(option == "set"){
-					Location trolltp = player.getLocation();
-					int trollY = trolltp.getBlockY();
-					int trollX = trolltp.getBlockX();
-					int trollZ = trolltp.getBlockZ();
-					float trollYaw = trolltp.getYaw();
-					float trollPitch = trolltp.getPitch();
-					Location teleport = new Location(target.getWorld(), trollX, trollY + 256, trollZ, trollYaw, trollPitch);
-					File dataFolder = getDataFolder();
-					if(!dataFolder.exists()){
-						dataFolder.mkdir();
-					}
-					Path dataFolderPath = dataFolder.toPath();
-					File trolltplocationfile = new File(dataFolderPath + "trolltp.txt");
-					if(!trolltplocationfile.exists()){
-						try {
-							trolltplocationfile.createNewFile();
-						} catch (IOException e) {
-							player.sendMessage("Failed to create location file");
-							e.printStackTrace();
-						}
-					}
-					try {
-						BufferedWriter out = new BufferedWriter(new FileWriter(trolltplocationfile));
-						String teleportstring = teleport.toString();
-						out.write(teleportstring);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}else{
-					File dataFolder = getDataFolder();
-					Path dataFolderPath = dataFolder.toPath();
-					File trolltplocationfile = new File(dataFolderPath + "trolltp.txt");
-					if(!dataFolder.exists()){
-						player.sendMessage("Set a location first!");
-					}else{
-						try {
-							BufferedReader in = new BufferedReader(new FileReader(trolltplocationfile));
-							String[] TPSTRING = in.readLine();
-							String[] locationvariables = TPSTRING info;
-							int xpos = Integer.parseInt(locationvariables[1]);
-							int ypos = Integer.parseInt(locationvariables[2]);
-							int zpos = Integer.parseInt(locationvariables[3]);
-							Location toTP;
-							toTP.setX(xpos);
-							toTP.setY(ypos);
-							toTP.setZ(zpos);
-						} catch (FileNotFoundException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
+				if (option.equalsIgnoreCase("set")){
+					File locationFile = new File(getDataFolder(), "trolltp.txt");
+					//try{
+						//FileInputStream imputStream1 = new FileInputStream(locationFile);
+						//DataInputStream dataStream1 = new DataInputStream(imputStream1);
+						//FileOutputStream fileOutput1 = new FileOutputStream(locationFile);
+						//DataOutputStream dataOutput1 = new DataInputStream(fileOutput1);
+						
+						
+					//}
 				}
-					*/
 				}else if(cmd.getName().equalsIgnoreCase("ragequit")){
 					Player player = (Player) sender;
 					Player target = player.getServer().getPlayer(args[0]);
@@ -273,24 +236,86 @@ public class TrollYourPlayers extends JavaPlugin {
 						player.sendMessage("Specify a player!");
 						player.sendMessage(cmd.getUsage().toString());
 					}else{
-						target.setAllowFlight(false);
-						target.setGameMode(GameMode.ADVENTURE);
-						Bukkit.getServer().broadcastMessage(target.getDisplayName() + " broke the #1 rule of minecraft: NEVER DIG STRAIGHT DOWN!!!");
-						Location targetLocation = target.getLocation();
-						Location currentTargetBlock = new Location(target.getWorld(), targetLocation.getBlockX(), 14, targetLocation.getBlockZ());
-						Location newTargetBlock = new Location(target.getWorld(), targetLocation.getBlockX(), targetLocation.getBlockY() - 1, targetLocation.getBlockZ());
-						//Location newTargetLocation = new Location(target.getWorld(), targetLocation.getBlockX(), targetLocation.getBlockY() - 2, targetLocation.getBlockZ());
-						currentTargetBlock.getBlock().setType(Material.LAVA);
-						int counterStart = currentTargetBlock.getBlockY();
-						int counterEnd = 14;
+						//target.setAllowFlight(false);
+						//target.setGameMode(GameMode.ADVENTURE);
+						//Bukkit.getServer().broadcastMessage(target.getDisplayName() + " broke the #1 rule of minecraft: NEVER DIG STRAIGHT DOWN!!!");
+						//Location targetLocation = target.getLocation();
+						//Location currentTargetBlock = new Location(target.getWorld(), targetLocation.getBlockX(), 14, targetLocation.getBlockZ());
+						//Location newTargetBlock = new Location(target.getWorld(), targetLocation.getBlockX(), targetLocation.getBlockY() - 1, targetLocation.getBlockZ());
+						////Location newTargetLocation = new Location(target.getWorld(), targetLocation.getBlockX(), targetLocation.getBlockY() - 2, targetLocation.getBlockZ());
+						//currentTargetBlock.getBlock().setType(Material.LAVA);
+						//int counterStart = currentTargetBlock.getBlockY();
+						//int counterEnd = 14;
 						
-						while(counterStart != counterEnd){
-							counterStart--;
-							targetLocation.getBlock
+						//while(counterStart != counterEnd){
+						//	counterStart--;
+						//	targetLocation.getBlock
 						}
 						
-					}
-				}
+					}else if(cmd.getName().equalsIgnoreCase("void")){
+						Player player = (Player) sender;
+						Player target = (player.getServer().getPlayer(args[0]));
+						
+						if (args.length == 1)
+						{
+						Location currentTargetLocation = target.getLocation();
+						int currentX = currentTargetLocation.getBlockX();
+						int newY = -14;
+						int currentZ = currentTargetLocation.getBlockZ();
+						
+						Location newTargetLocation = new Location(target.getWorld(), currentX, newY, currentZ);
+						target.teleport(newTargetLocation);
+						}else{
+							player.sendMessage(ChatColor.RED + "Usage:");
+							player.sendMessage(cmd.getUsage().toString());
+						}
+					}else if(cmd.getName().equalsIgnoreCase("tripout")){
+						Player player = (Player) sender;
+						Player target = (player.getServer().getPlayer(args[0]));
+						if(args.length == 1){
+							target.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, Integer.MAX_VALUE, 10));
+						}else{
+							player.sendMessage(ChatColor.RED + "Usage:");
+							player.sendMessage(cmd.getUsage().toString());
+						}
+					}else if(cmd.getName().equalsIgnoreCase("mobraid")){
+						//Credits to greatsword9 for the base idea
+						Player player = (Player) sender;
+						Player target = (player.getServer().getPlayer(args[0]));
+						
+						if(args.length == 1){
+						Location currentTargetLocation = target.getLocation();
+						Location mobSpawnLocation = new Location(target.getWorld(), currentTargetLocation.getBlockX() + 25, currentTargetLocation.getBlockY() ,currentTargetLocation.getBlockZ() + 25);
+						
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.WITHER);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ENDER_DRAGON);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.CREEPER);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.CREEPER);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.CREEPER);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.CREEPER);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ENDERMAN);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ENDERMAN);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ENDERMAN);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ENDERMAN);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ENDERMAN);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.SKELETON);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.SKELETON);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.SKELETON);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.SKELETON);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.SKELETON);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.SKELETON);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ZOMBIE);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ZOMBIE);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ZOMBIE);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ZOMBIE);
+						target.getWorld().spawnEntity(mobSpawnLocation, EntityType.ZOMBIE);
+						}else{
+							player.sendMessage(ChatColor.RED + "Usage:");
+							player.sendMessage(cmd.getUsage().toString());
+						}
+					}//else if(cmd.getName().equalsIgnoreCase("")){
+						
+					//}
 	return true;
 }
 }

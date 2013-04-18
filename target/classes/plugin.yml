@@ -57,3 +57,18 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.digstraightdown
       permission-message: Command not found.
+   void:
+      description: Keeps X and Z. Sets Y to -14 (In the void)
+      usage: /<command> [player]
+      permission: TrollYourPlayers.void
+      permission-message: Command not found.
+   tripout:
+      description: Gives nausea to specified player. 
+      usage: /<command> [player]
+      permission: TrollYourPlayers.tripout
+      permission-message: Command not found.
+   mobraid:
+      description: Gives nausea to specified player. 
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
