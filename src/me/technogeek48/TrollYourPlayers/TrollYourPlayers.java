@@ -1,21 +1,13 @@
 package me.technogeek48.TrollYourPlayers;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -171,11 +163,11 @@ public class TrollYourPlayers extends JavaPlugin {
 				}
 			}else if(cmd.getName().equalsIgnoreCase("trolltp")){
 				Player player = (Player) sender;
-				Player target = (player.getServer().getPlayer(args[0]));
+				//Player target = (player.getServer().getPlayer(args[0]));
 				String option = args[0].toString();
 				player.sendMessage("WIP");
 				if (option.equalsIgnoreCase("set")){
-					File locationFile = new File(getDataFolder(), "trolltp.txt");
+					//File locationFile = new File(getDataFolder(), "trolltp.txt");
 					//try{
 						//FileInputStream imputStream1 = new FileInputStream(locationFile);
 						//DataInputStream dataStream1 = new DataInputStream(imputStream1);
@@ -231,7 +223,7 @@ public class TrollYourPlayers extends JavaPlugin {
 					fourTargetLocation.getBlock().setType(Material.ANVIL);
 				}else if(cmd.getName().equalsIgnoreCase("digstraightdown")){
 					Player player = (Player) sender;
-					Player target = player.getServer().getPlayer(args[0]);
+					//Player target = player.getServer().getPlayer(args[0]);
 					if(args[0].isEmpty()){
 						player.sendMessage("Specify a player!");
 						player.sendMessage(cmd.getUsage().toString());
@@ -331,7 +323,7 @@ public class TrollYourPlayers extends JavaPlugin {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-						anvilTarget.
+						anvilTarget.getBlock().setType(Material.LAVA);
 						
 						
 					}

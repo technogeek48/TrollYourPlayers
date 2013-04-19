@@ -72,3 +72,8 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
       permission-message: Command not found.
+   smitepointer:
+      description: Gives nausea to specified player. 
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
