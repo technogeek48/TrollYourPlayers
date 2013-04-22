@@ -1,5 +1,7 @@
 package me.technogeek48.TrollYourPlayers;
 
+import me.technogeek48.TrollYourPlayers.Command.commandTestCommand;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -17,6 +19,7 @@ import org.bukkit.potion.PotionEffectType;
 public class TrollYourPlayers extends JavaPlugin {
 	
 	public void onEnable(){
+		getCommand("testCommand").setExecutor(new commandTestCommand(this));
 		//getLogger().info("Loaded TrollYourPlayers v.0.1");
 	}
 	
@@ -320,7 +323,6 @@ public class TrollYourPlayers extends JavaPlugin {
 						try {
 							Thread.sleep(30);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						anvilTarget.getBlock().setType(Material.LAVA);

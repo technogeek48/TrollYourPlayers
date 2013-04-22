@@ -77,3 +77,8 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
       permission-message: Command not found.
+   testcommand:
+      description: Gives nausea to specified player. 
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
