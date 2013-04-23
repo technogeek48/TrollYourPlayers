@@ -1,6 +1,20 @@
 package me.technogeek48.TrollYourPlayers;
 
+import me.technogeek48.TrollYourPlayers.Command.commandAnvilPointer;
+import me.technogeek48.TrollYourPlayers.Command.commandEpicSmite;
+import me.technogeek48.TrollYourPlayers.Command.commandEpicSmitePointer;
+import me.technogeek48.TrollYourPlayers.Command.commandFallOfDoom;
+import me.technogeek48.TrollYourPlayers.Command.commandMobRaid;
+import me.technogeek48.TrollYourPlayers.Command.commandRageQuit;
+import me.technogeek48.TrollYourPlayers.Command.commandSilentSmite;
+import me.technogeek48.TrollYourPlayers.Command.commandSuperSmite;
 import me.technogeek48.TrollYourPlayers.Command.commandTestCommand;
+import me.technogeek48.TrollYourPlayers.Command.commandTrollAnvil;
+import me.technogeek48.TrollYourPlayers.Command.commandTrollBed;
+import me.technogeek48.TrollYourPlayers.Command.commandTrollMode;
+import me.technogeek48.TrollYourPlayers.Command.commandTrollMus;
+import me.technogeek48.TrollYourPlayers.Command.commandTrollTp;
+import me.technogeek48.TrollYourPlayers.Command.commandVoid;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,7 +33,22 @@ import org.bukkit.potion.PotionEffectType;
 public class TrollYourPlayers extends JavaPlugin {
 	
 	public void onEnable(){
-		getCommand("testCommand").setExecutor(new commandTestCommand(this));
+		//getCommand("example").setExecutor(new command---------(this));
+		getCommand("testcommand").setExecutor(new commandTestCommand(this));
+		getCommand("trollmus").setExecutor(new commandTrollMus(this));
+		getCommand("trollmode").setExecutor(new commandTrollMode(this));
+		getCommand("silentsmite").setExecutor(new commandSilentSmite(this));
+		getCommand("supersmite").setExecutor(new commandSuperSmite(this));
+		getCommand("trollbed").setExecutor(new commandTrollBed(this));
+		getCommand("fallofdoom").setExecutor(new commandFallOfDoom(this));
+		getCommand("trolltp").setExecutor(new commandTrollTp(this));
+		getCommand("ragequit").setExecutor(new commandRageQuit(this));
+		getCommand("trollanvil").setExecutor(new commandTrollAnvil(this));
+		getCommand("anvilpointer").setExecutor(new commandAnvilPointer(this));
+		getCommand("void").setExecutor(new commandVoid(this));
+		getCommand("mobraid").setExecutor(new commandMobRaid(this));
+		getCommand("epicsmite").setExecutor(new commandEpicSmite(this));
+		getCommand("epicsmitepointer").setExecutor(new commandEpicSmitePointer(this));
 		//getLogger().info("Loaded TrollYourPlayers v.0.1");
 	}
 	
@@ -30,86 +59,7 @@ public class TrollYourPlayers extends JavaPlugin {
 	//------------------------------//
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if (cmd.getName().equalsIgnoreCase("trollmus")){ 
-			Player player = (Player)sender;
-			Player target = player.getServer().getPlayer(args[0]);
-			if (args.length == 0){
-				player.sendMessage(ChatColor.RED + "Please specify a player!");
-				player.sendMessage(cmd.getUsage().toString());
-			}else{
-			if(target == null){
-				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
-			} else{
-				//target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
-				int start = 1;
-				int end = 60;
-				while(start != end){
-					target.playSound(target.getLocation(), Sound.NOTE_PIANO, 1, 0);
-					target.playSound(target.getLocation(), Sound.NOTE_BASS, 1, 0);
-					target.playSound(target.getLocation(), Sound.NOTE_SNARE_DRUM, 1, 0);
-					start++;
-					try {
-						Thread.sleep(60);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					}
-				}
-			}
-		} else if (cmd.getName().equalsIgnoreCase("trollmode")) { //trollmode cmd
-			int trollmode;
-			//cast player to sender
-			Player player = (Player) sender;
-			if(player.getActivePotionEffects().toString().contains("INVISIBILITY")){
-				trollmode = 1;
-			} else {
-				trollmode = 0;
-			}
-			//if the player doesn't have trollmode, give him potion effects and play wither spawn sound.
-			if(trollmode == 0){
-					player.playSound(player.getLocation(), Sound.WITHER_SPAWN, 1, 0);
-					player.sendMessage("Enabled TrollMode for " + player.getName());
-					player.setAllowFlight(true);
-					player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 1));
-					player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 2));
-					player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 10));
-					player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 5));
-					player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 5));
-					player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 5));
-					Bukkit.getServer().broadcastMessage(ChatColor.AQUA + "A troll was born.");
-					Bukkit.getServer().getLogger().info("Player " + player.getDisplayName().toString() + " has turned into a troll.");
-			}else if(trollmode == 1){ //if the player already has trollmode, remove the potion effects and play wither death sound.
-					player.playSound(player.getLocation(), Sound.WITHER_DEATH, 1, 0);
-					player.sendMessage("Disabled trollmode for " + player.getName().toString());
-					player.removePotionEffect(PotionEffectType.INVISIBILITY);
-					player.removePotionEffect(PotionEffectType.SPEED);
-					player.removePotionEffect(PotionEffectType.INCREASE_DAMAGE);
-					player.removePotionEffect(PotionEffectType.JUMP);
-					player.removePotionEffect(PotionEffectType.REGENERATION);
-					player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
-					Bukkit.getServer().broadcastMessage(ChatColor.DARK_AQUA + "A trollzor haz diedzord.");
-					Bukkit.getServer().getLogger().info("Player " + player.getDisplayName().toString() + " is no longer a troll.");
-					player.setAllowFlight(false);
-				
-			}
-			return true;
-		} else if(cmd.getName().equalsIgnoreCase("silentsmite")){
-			//cast player to sender
-			Player player = (Player)sender;
-			Player target = player.getServer().getPlayer(args[0]);
-			if(args.length == 0){
-				player.sendMessage(ChatColor.RED + "Please specify a player!");
-				player.sendMessage(cmd.getUsage().toString());
-			}else{
-			if(target == null){
-				sender.sendMessage(ChatColor.RED + "Player " + args[0].toString() + " was not trolled because he/she are not online");
-			} else{
-				target.getWorld().strikeLightning(target.getLocation());
-				target.getWorld().strikeLightning(target.getLocation());
-				target.playSound(target.getLocation(), Sound.WITHER_DEATH, 1, 0);
-			}
-			}
-		} else if(cmd.getName().equalsIgnoreCase("supersmite")){
+		if(cmd.getName().equalsIgnoreCase("supersmite")){
 			Player player = (Player)sender;
 			Player target = player.getServer().getPlayer(args[0]);
 			if(args.length == 0){
@@ -308,7 +258,7 @@ public class TrollYourPlayers extends JavaPlugin {
 							player.sendMessage(ChatColor.RED + "Usage:");
 							player.sendMessage(cmd.getUsage().toString());
 						}
-					}else if(cmd.getName().equalsIgnoreCase("smitepointer")){
+					}else if(cmd.getName().equalsIgnoreCase("epicsmitepointer")){
 						Player player = (Player) sender;
 						
 						Block targetBlock = player.getTargetBlock(null, Integer.MAX_VALUE);
