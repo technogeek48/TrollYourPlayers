@@ -11,7 +11,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 public class commandMobRaid implements CommandExecutor {
-	private TrollYourPlayers plugin;
+	//private TrollYourPlayers plugin;
 
 	public commandMobRaid(TrollYourPlayers trollYourPlayers) {
 		// TODO Auto-generated constructor stub

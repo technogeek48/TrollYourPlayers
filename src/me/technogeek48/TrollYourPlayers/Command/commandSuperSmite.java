@@ -13,7 +13,7 @@ public class commandSuperSmite implements CommandExecutor{
 	private TrollYourPlayers plugin;
 
 	public commandSuperSmite(TrollYourPlayers plugin) {
-		this.plugin = plugin;
+		//this.plugin = plugin;
 	}
 	
 	@Override

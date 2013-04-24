@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class commandTrollBed implements CommandExecutor {
-	private TrollYourPlayers plugin;
+	//private TrollYourPlayers plugin;
 
 	public commandTrollBed(TrollYourPlayers plugin) {
 		// TODO Auto-generated constructor stub

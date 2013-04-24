@@ -16,7 +16,7 @@ public class commandTrollMode implements CommandExecutor{
 	private TrollYourPlayers plugin;
 
 	public commandTrollMode(TrollYourPlayers plugin) {
-		this.plugin = plugin;
+		//this.plugin = plugin;
 	}
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 	if (cmd.getName().equalsIgnoreCase("trollmode")) { //trollmode cmd

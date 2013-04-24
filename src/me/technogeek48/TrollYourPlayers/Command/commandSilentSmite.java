@@ -13,7 +13,7 @@ public class commandSilentSmite implements CommandExecutor{
 	private TrollYourPlayers plugin;
 
 	public commandSilentSmite(TrollYourPlayers plugin) {
-		this.plugin = plugin;
+		//this.plugin = plugin;
 	}
 	
 	@Override

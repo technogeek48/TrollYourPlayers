@@ -13,7 +13,7 @@ public class commandTrollMus implements CommandExecutor{
 	private TrollYourPlayers plugin;
 
 	public commandTrollMus(TrollYourPlayers plugin) {
-		this.plugin = plugin;
+		//this.plugin = plugin;
 	}
 	
 	@Override

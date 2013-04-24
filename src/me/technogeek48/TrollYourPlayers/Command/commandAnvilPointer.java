@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class commandAnvilPointer implements CommandExecutor {
-	private TrollYourPlayers plugin;
+	//private TrollYourPlayers plugin;
 
 	public commandAnvilPointer(TrollYourPlayers trollYourPlayers) {
 		// TODO Auto-generated constructor stub

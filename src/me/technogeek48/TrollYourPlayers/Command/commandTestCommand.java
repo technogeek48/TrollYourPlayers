@@ -11,7 +11,7 @@ public class commandTestCommand implements CommandExecutor {
 	private TrollYourPlayers plugin;
 
 	public commandTestCommand(TrollYourPlayers plugin) {
-		this.plugin = plugin;
+		//this.plugin = plugin;
 	}
 	
 	@Override
