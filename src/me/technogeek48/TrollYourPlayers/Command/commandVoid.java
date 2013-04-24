@@ -17,24 +17,22 @@ public class commandVoid implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if(cmd.getName().equalsIgnoreCase("fallofdoom")){
-			//cast player to sender
+		if(cmd.getName().equalsIgnoreCase("void")){
 			Player player = (Player) sender;
-			//cast player to args[0]
-			Player target = player.getServer().getPlayer(args[0]);
-			Location targetLocation = target.getLocation();
-			int targetY = targetLocation.getBlockY();
-			int targetX = targetLocation.getBlockX();
-			int targetZ = targetLocation.getBlockZ();
-			float targetYaw = targetLocation.getYaw();
-			float targetPitch = targetLocation.getPitch();
-			//Make a new location with the y axis jacked up.
-			Location newLocation = new Location(target.getWorld(), targetX, targetY + 256, targetZ, targetYaw, targetPitch);
-			if(args.length == 0){
-				player.sendMessage(ChatColor.RED + "Please specify a player!");
-				player.sendMessage(cmd.getUsage().toString());
+			Player target = (player.getServer().getPlayer(args[0]));
+			
+			if (args.length == 1)
+			{
+			Location currentTargetLocation = target.getLocation();
+			int currentX = currentTargetLocation.getBlockX();
+			int newY = -14;
+			int currentZ = currentTargetLocation.getBlockZ();
+			
+			Location newTargetLocation = new Location(target.getWorld(), currentX, newY, currentZ);
+			target.teleport(newTargetLocation);
 			}else{
-			target.teleport(newLocation);
+				player.sendMessage(ChatColor.RED + "Usage:");
+				player.sendMessage(cmd.getUsage().toString());
 			}
 		}
 		return true;
