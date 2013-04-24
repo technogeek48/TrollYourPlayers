@@ -10,6 +10,7 @@ import me.technogeek48.TrollYourPlayers.Command.commandSilentSmite;
 import me.technogeek48.TrollYourPlayers.Command.commandSuperSmite;
 import me.technogeek48.TrollYourPlayers.Command.commandTestCommand;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollAnvil;
+import me.technogeek48.TrollYourPlayers.Command.commandTrollArrow;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollBed;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollMode;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollMus;
@@ -20,6 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class TrollYourPlayers extends JavaPlugin {
 	
 	public void onEnable(){
+		getCommand("trollarrow").setExecutor(new commandTrollArrow(this));
 		getCommand("testcommand").setExecutor(new commandTestCommand(this));
 		getCommand("trollmus").setExecutor(new commandTrollMus(this));
 		getCommand("trollmode").setExecutor(new commandTrollMode(this));
