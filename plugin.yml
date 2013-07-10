@@ -45,8 +45,8 @@ commands:
    trollanvil:
       description: Places 4 anvils above the players head.
       usage: /<command> [player]
-      permission: TrollYourPlayers.trollanvil
       permission-message: Command not found.
+      permission: TrollYourPlayers.trollanvil
    anvilpointer:
       description: Places 4 anvils above targeted block.
       usage: /<command> [player]
@@ -58,32 +58,35 @@ commands:
       permission: TrollYourPlayers.digstraightdown
       permission-message: Command not found.
    void:
-      description: Keeps X and Z. Sets Y to -14 (In the void)
+      description: teleports specified player Keeps X and Z. Sets Y to -14 (In the void)
       usage: /<command> [player]
       permission: TrollYourPlayers.void
-      permission-message: Command not found.
    tripout:
       description: Gives nausea to specified player. 
-      usage: /<command> [player]
       permission: TrollYourPlayers.tripout
       permission-message: Command not found.
    mobraid:
-      description: Gives nausea to specified player. 
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
+      description: spawns several mobs where you are looking
       permission-message: Command not found.
    epicsmite:
-      description: Gives nausea to specified player. 
+      description: Epiclysmite the specified player. 
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
       permission-message: Command not found.
    epicsmitepointer:
-      description: Gives nausea to specified player. 
+      description: Epiclysmites the block ur looking at
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
       permission-message: Command not found.
+       description: testcommand
    testcommand:
-      description: Gives nausea to specified player. 
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
+   trollarrow:
+      description: acts as arrowmachinegun!
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
       permission-message: Command not found.
