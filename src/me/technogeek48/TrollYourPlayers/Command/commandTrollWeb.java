@@ -22,9 +22,9 @@ public class commandTrollWeb implements CommandExecutor {
 			Player player = (Player) sender;
 			Player target = (player.getServer().getPlayer(args[0]));
 			
-			if (args.length == 1){
+			if (args.length == 1 && target != null){
 			Location targetLocation = target.getLocation();
-			Location feetLocation = new Location(target.getWorld(), targetLocation.getX(), targetLocation.getY(), targetLocation.getZ());
+			Location feetLocation = new Location(target.getWorld(), targetLocation.getX(), targetLocation.getY() -1, targetLocation.getZ());
 			
 			targetLocation.getBlock().setType(Material.WEB);
 			feetLocation.getBlock().setType(Material.WEB);

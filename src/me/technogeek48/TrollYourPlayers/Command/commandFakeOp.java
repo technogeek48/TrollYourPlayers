@@ -17,12 +17,18 @@ public class commandFakeOp implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		if(cmd.getName().equalsIgnoreCase("void")){
+		if(cmd.getName().equalsIgnoreCase("fakeop")){
 			Player player = (Player) sender;
 			Player target = (player.getServer().getPlayer(args[0]));
 			
 			if (args.length == 1) {
 			target.sendMessage(ChatColor.GRAY +"You are now op!");
+			try {
+				Thread.sleep(30000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			}else{
 				player.sendMessage(ChatColor.RED + "Usage:");
 				player.sendMessage(cmd.getUsage().toString());

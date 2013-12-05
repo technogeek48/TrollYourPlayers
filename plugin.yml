@@ -80,12 +80,32 @@ commands:
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
       permission-message: Command not found.
-       description: testcommand
    testcommand:
+      description: testcommand
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
       permission-message: Command not found.
    trollarrow:
+      description: acts as arrowmachinegun!
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
+   trollswap:
+      description: acts as arrowmachinegun!
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
+   trolldragon:
+      description: acts as arrowmachinegun!
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
+   trollweb:
+      description: acts as arrowmachinegun!
+      usage: /<command> [player]
+      permission: TrollYourPlayers.mobraid
+      permission-message: Command not found.
+   fakeop:
       description: acts as arrowmachinegun!
       usage: /<command> [player]
       permission: TrollYourPlayers.mobraid
