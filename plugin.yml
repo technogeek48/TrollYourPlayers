@@ -1,112 +1,102 @@
 name: TrollYourPlayers
-main: me.technogeek48.TrollYourPlayers.TrollYourPlayers
+main: me.technogeek48.typ.TrollYourPlayers
 version: 1.0
 commands:
    silentsmite:
       description: Smites specified player.
       usage: /<command> [player]
-      permission: TrollYourPlayers.silentsmite
+      permission: typ.silentsmite
       permission-message: Command not found.
    trollmode:
       description: Enables trollmode.
       usage: /<command>
-      permission: TrollYourPlayers.trollmode
+      permission: typ.trollmode
       permission-message: Command not found.
    trollmus:
       description: Plays strange sounds to the designated player.
       usage: /<command> [player]
-      permission: TrollYourPlayers.trollmus
+      permission: typ.trollmus
       permission-message: Command not found.
    supersmite:
       description: Smites and explodes player.
       usage: /<command> [player]
-      permission: TrollYourPlayers.supersmite
+      permission: typ.supersmite
       permission-message: Command not found.
    trollbed:
       description: Explodes specified players bedspawn.
       usage: /<command> [player]
-      permission: TrollYourPlayers.trollbed
+      permission: typ.trollbed
       permission-message: Command not found.
    fallofdoom:
       description: Teleports players to the sky.
       usage: /<command> [player]
-      permission: TrollYourPlayers.fallofdoom
+      permission: typ.fallofdoom
       permission-message: Command not found.
    ragequit:
       description: Makes the player look like he ragequit.
       usage: /<command> [player]
-      permission: TrollYourPlayers.fallofdoom
+      permission: typ.ragequit
       permission-message: Command not found.
    trolltp:
       description: Teleports players to destination.
       usage: /<command> [player]
-      permission: TrollYourPlayers.trolltp
+      permission: typ.trolltp
       permission-message: Command not found.
    trollanvil:
       description: Places 4 anvils above the players head.
       usage: /<command> [player]
       permission-message: Command not found.
-      permission: TrollYourPlayers.trollanvil
+      permission: typ.trollanvil
    anvilpointer:
       description: Places 4 anvils above targeted block.
       usage: /<command> [player]
-      permission: TrollYourPlayers.anvilpointer
-      permission-message: Command not found.
-   digstraightdown:
-      description: Nuffsaid.
-      usage: /<command> [player]
-      permission: TrollYourPlayers.digstraightdown
+      permission: typ.anvilpointer
       permission-message: Command not found.
    void:
-      description: teleports specified player Keeps X and Z. Sets Y to -14 (In the void)
+      description: teleports specified player: Keeps X and Z. Sets Y to -14 (In the void)
       usage: /<command> [player]
-      permission: TrollYourPlayers.void
+      permission: typ.void
    tripout:
       description: Gives nausea to specified player. 
-      permission: TrollYourPlayers.tripout
+      permission: typ.tripout
       permission-message: Command not found.
    mobraid:
-      usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      usage: /<command>
+      permission: typ.mobraid
       description: spawns several mobs where you are looking
       permission-message: Command not found.
    epicsmite:
       description: Epiclysmite the specified player. 
       usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      permission: typ.epicsmite
       permission-message: Command not found.
    epicsmitepointer:
-      description: Epiclysmites the block ur looking at
-      usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
-      permission-message: Command not found.
-   testcommand:
-      description: testcommand
-      usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      description: Epiclysmites the block you are looking at.
+      usage: /<command>
+      permission: typ.epicsmitepointer
       permission-message: Command not found.
    trollarrow:
-      description: acts as arrowmachinegun!
+      description: acts as arrowmachinegun! (currently bugged)
       usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      permission: typ.trollarrow
       permission-message: Command not found.
    trollswap:
-      description: acts as arrowmachinegun!
+      description: Swaps you location with someone else.
       usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      permission: typ.trollswap
       permission-message: Command not found.
    trolldragon:
-      description: acts as arrowmachinegun!
+      description: Spawns an enderdragon at a player.
       usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      permission: typ.trolldragon
       permission-message: Command not found.
    trollweb:
-      description: acts as arrowmachinegun!
+      description: Traps player in webs.
       usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      permission: typ.trollweb
       permission-message: Command not found.
    fakeop:
-      description: acts as arrowmachinegun!
+      description: Send a fake op message.
       usage: /<command> [player]
-      permission: TrollYourPlayers.mobraid
+      permission: typ.fakeop
       permission-message: Command not found.

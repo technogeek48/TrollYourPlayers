@@ -3,6 +3,7 @@ package me.technogeek48.TrollYourPlayers;
 import me.technogeek48.TrollYourPlayers.Command.commandAnvilPointer;
 import me.technogeek48.TrollYourPlayers.Command.commandEpicSmite;
 import me.technogeek48.TrollYourPlayers.Command.commandEpicSmitePointer;
+import me.technogeek48.TrollYourPlayers.Command.commandFakeOp;
 import me.technogeek48.TrollYourPlayers.Command.commandFallOfDoom;
 import me.technogeek48.TrollYourPlayers.Command.commandMobRaid;
 import me.technogeek48.TrollYourPlayers.Command.commandRageQuit;
@@ -16,13 +17,13 @@ import me.technogeek48.TrollYourPlayers.Command.commandTrollMode;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollMus;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollTp;
 import me.technogeek48.TrollYourPlayers.Command.commandVoid;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TrollYourPlayers extends JavaPlugin {
 	
 	public void onEnable(){
 		getCommand("trollarrow").setExecutor(new commandTrollArrow(this));
-		getCommand("testcommand").setExecutor(new commandTestCommand(this));
 		getCommand("trollmus").setExecutor(new commandTrollMus(this));
 		getCommand("trollmode").setExecutor(new commandTrollMode(this));
 		getCommand("silentsmite").setExecutor(new commandSilentSmite(this));
@@ -37,6 +38,7 @@ public class TrollYourPlayers extends JavaPlugin {
 		getCommand("mobraid").setExecutor(new commandMobRaid(this));
 		getCommand("epicsmite").setExecutor(new commandEpicSmite(this));
 		getCommand("epicsmitepointer").setExecutor(new commandEpicSmitePointer(this));
+		getCommand("fakeop").setExecutor(new commandFakeOp(this));
 	}
 	public void onDisable(){
 		//do shit
