@@ -8,6 +8,7 @@ import me.technogeek48.TrollYourPlayers.Command.commandFallOfDoom;
 import me.technogeek48.TrollYourPlayers.Command.commandMobRaid;
 import me.technogeek48.TrollYourPlayers.Command.commandRageQuit;
 import me.technogeek48.TrollYourPlayers.Command.commandSilentSmite;
+import me.technogeek48.TrollYourPlayers.Command.commandSmiteLoc;
 import me.technogeek48.TrollYourPlayers.Command.commandSuperSmite;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollAnvil;
 import me.technogeek48.TrollYourPlayers.Command.commandTrollArrow;
@@ -18,6 +19,7 @@ import me.technogeek48.TrollYourPlayers.Command.commandTrollTp;
 import me.technogeek48.TrollYourPlayers.Command.commandVoid;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffectType;
 
 public class TrollYourPlayers extends JavaPlugin {
 	
@@ -38,6 +40,7 @@ public class TrollYourPlayers extends JavaPlugin {
 		getCommand("epicsmite")		  .setExecutor(new commandEpicSmite		  (this));
 		getCommand("epicsmitepointer").setExecutor(new commandEpicSmitePointer(this));
 		getCommand("fakeop")		  .setExecutor(new commandFakeOp          (this));
+		getCommand("smiteloc")		  .setExecutor(new commandSmiteLoc        (this));
 	}
 	public void onDisable(){
 		//do shit

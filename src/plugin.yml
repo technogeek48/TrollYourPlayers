@@ -1,5 +1,5 @@
 name: TrollYourPlayers
-main: me.technogeek48.typ.TrollYourPlayers
+main: me.technogeek48.TrollYourPlayers.TrollYourPlayers
 version: 1.0
 commands:
    silentsmite:
@@ -99,4 +99,9 @@ commands:
       description: Send a fake op message.
       usage: /<command> [player]
       permission: typ.fakeop
+      permission-message: Command not found.
+   smiteloc:
+      description: Smite a specific BLOCK in the world.
+      usage: /<command> [x] [y] [z]
+      permission: typ.smiteloc
       permission-message: Command not found.
